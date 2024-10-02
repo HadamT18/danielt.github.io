@@ -1,0 +1,232 @@
+@import url('https://fonts.cdnfonts.com/css/avenger');
+:root {
+  --card-height: 370px;
+  --card-width: calc(var(--card-height) / 1.5);
+}
+* {
+  box-sizing: border-box;
+}
+body {
+    font-family: monospace;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+  }
+  .avenger{
+    padding: 0;
+    margin: 0;
+  }
+  .header {
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box; 
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 0 0 2px 3px rgba(250, 0, 0, 0.75); 
+    background-color: #0B0930;
+    color: #f8f9fa;
+    padding-left: 30px;
+    padding-top: 5px;
+    opacity: 1;
+    background: linear-gradient(308deg,#0b0930,#0b0930,#2c2a89,#453aa4,#5c49c6,#7b6fde);
+    background-size: 360% 360%;
+    animation: gradient-animation 36s ease infinite;
+    
+    
+  }
+
+
+  
+  @keyframes gradient-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  
+  .footer {
+    display: flex;
+    justify-content: end;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(60deg,#0b0930,#0b0930,#2c2a89,#453aa4,#5c49c6,#7b6fde);
+  background-size: 360% 360%;
+  animation: gradient-animation 36s ease infinite;
+    
+    padding: 15px;
+    background-color: #0B0930;
+    color: #f8f9fa;
+    box-sizing: border-box; 
+  
+    
+  }
+  .names{
+    
+    text-align: center;
+    font-family: 'Avenger', sans-serif;
+    position: absolute;
+    bottom:0;
+    color: #0B0930;
+    
+
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+  }
+
+ 
+
+
+  
+
+  #title {
+    font-size: 50px;
+  }
+  span {
+    font-size: 20px;
+  }
+
+  .body{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+    background-image: url('Images/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: background-image 0.3s ease-in-out;
+  }
+  .header, .footer {
+    transition: all 0.3s ease;
+  }
+  .card {
+    width: var(--card-width);
+    height: var(--card-height);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 0 36px;
+    perspective: 2500px;
+    margin: 0 50px;
+    transition:all 0.3s ease-in-out;
+  }
+  
+  .cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .wrapper {
+    transition: all 0.5s;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+  }
+  
+  .card:hover .wrapper {
+    transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+    box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+  }
+  .card:hover {
+    transform: scale(1.2);
+   
+   
+  }
+  .cover-image{
+    transition: 0.3s ease-in-out;
+    border-radius: 20;
+  }
+  .card:hover .cover-image{
+    
+    filter: saturate(0);
+   
+  }
+
+ 
+ 
+  
+  .card:hover .names{
+    opacity: 1;
+    bottom:-100px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+  }
+
+  
+  
+  .wrapper::before,
+  .wrapper::after {
+    content: "";
+    opacity: 0;
+    width: 100%;
+    height: 80px;
+    transition: all 0.5s;
+    position: absolute;
+    left: 0;
+  }
+  .wrapper::before {
+    top: 0;
+    height: 100%;
+    background-image: linear-gradient(
+      to top,
+      transparent 46%,
+      rgba(12, 13, 19, 0.5) 68%,
+      rgba(12, 13, 19) 97%
+    );
+  }
+  .wrapper::after {
+    bottom: 0;
+    opacity: 1;
+    background-image: linear-gradient(
+      to bottom,
+      transparent 46%,
+      rgba(12, 13, 19, 0.5) 68%,
+      rgba(12, 13, 19) 97%
+    );
+  }
+  
+  .card:hover .wrapper::before,
+  .wrapper::after {
+    opacity: 1;
+  }
+  
+  .card:hover .wrapper::after {
+    height: 120px;
+  }
+  .title {
+    width: 100%;
+    transition: transform 0.5s;
+  }
+  .card:hover .title {
+    transform: translate3d(0%, -50px, 100px);
+  }
+  
+  .character {
+    width: 100%;
+    opacity: 0;
+    transition: all 0.5s;
+    position: absolute;
+    z-index: -1;
+  }
+  
+  .card:hover .character {
+    opacity: 1;
+    transform: translate3d(0%, -30%, 100px);
+  }
